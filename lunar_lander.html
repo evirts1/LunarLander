@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE> New Document </TITLE>
+<META NAME="Generator" CONTENT="EditPlus">
+<META NAME="Author" CONTENT="">
+<META NAME="Keywords" CONTENT="">
+<META NAME="Description" CONTENT="">
+</HEAD>
+
+<BODY background="earthrisebig.jpg">
+
+<div id="b2" style="top:0;left:30;position:absolute;"><INPUT id="b2i" TYPE="image" SRC="LL.gif"></div>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+var p=Math.PI;
+var x=0;
+var y=0;
+var cx=30;
+var cy=0;
+var ie = document.all ? true : false;
+
+function resetImage()
+{
+ document.getElementById("b2i").src = 'LL.gif';
+ setTimeout("resetImage()",2000);
+}
+ resetImage();
+
+function moveb2()
+{
+	y += .001;//gravity
+	
+	//landing
+	if((cy > screen.height-350 && document.body.background.indexOf('moon2.jpg') != -1))
+	{
+	  cy = cy;
+	  cx = cx;
+		
+		if(y<-.5)
+			{
+				cy = cy + y;
+				cx = cx + x;
+			}
+	}
+	else
+	{
+		cy = cy + y;
+		cx = cx + x;
+	}
+
+    
+    
+	b2.style.top = cy;
+	b2.style.left = cx;
+
+	if(cy > screen.height && document.body.background.indexOf('earthrisebig.jpg') != -1)
+	{
+		document.body.background = 'moon2.jpg';
+		cy = 1;
+	}
+
+	if(cy < 0 && document.body.background.indexOf('moon2.jpg') != -1)
+	{
+		document.body.background = 'earthrisebig.jpg';
+		cy = screen.height-50;
+	}
+		
+    
+
+	setTimeout("moveb2()",10);
+}
+//alert(document.body.background.indexOf('earthrisebig.jpg'));
+moveb2();
+document.onkeydown = function(e) {
+var evtobj=window.event? event : e;
+var d = .01;
+switch(evtobj.keyCode)
+{
+	case  98:y+=d;break;
+	case 100:x-=d;document.getElementById("b2i").src = 'LLfireL.gif';break;
+	case 102:x+=d;document.getElementById("b2i").src = 'LLfireR.gif';break;
+	case 104:y-=d;
+		document.getElementById("b2i").src = 'LLfire.gif';
+		break;
+	case  40:y+=d;break;
+	case 37:x-=d;document.getElementById("b2i").src = 'LLfireL.gif';break;
+	case 38:y-=d;document.getElementById("b2i").src = 'LLfire.gif';break;
+	case 39:x+=d;document.getElementById("b2i").src = 'LLfireR.gif';break;
+	default:break;
+}
+
+}
+//-->
+</SCRIPT>
+</BODY>
+</HTML>
